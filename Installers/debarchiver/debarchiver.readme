@@ -1,0 +1,17 @@
+### Repo Host ###
+sudo adduser debarchiver
+sudo apt-get install debarchiver apache2
+sudo cp _etc_debarchiver.conf /etc/debarchiver.conf
+sudo -u debarchiver rm -rf /var/lib/debarchiver/dists/* /var/lib/debarchiver/incoming/*
+sudo cp _etc_apache2_conf.d_debarchiver /etc/apache2/conf.d/debarchiver
+sudo service apache2 restart
+
+### Package Builder ###
+sudo apt-get install dput
+ssh-copy-id debarchiver@XXXrepohostXXX
+cp dput.cf ~/.dput.cf  # and modify as necessary
+dput -u XXXrepohostXXX XXXpackageXXX.changes
+
+### Repo user ###
+sudo cp _etc_apt_sources.list.d_alpha.list /etc/apt/sources.list.d/alpha.list
+sudo apt-get update

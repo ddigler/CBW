@@ -1,0 +1,19 @@
+Source: libhdf5
+Priority: extra
+Maintainer: Ryan Stoner <rstoner99@gmail.com>
+Build-Depends: debhelper (>= 8.0.0), autotools-dev, libsz2, zlib1g-dev
+Standards-Version: 3.9.3
+Section: libs
+
+Package: libhdf5
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libsz2,  zlib1g
+Conflicts: hdf5, libhdf5-doc, hdf5-tools,
+ libhdf5-serial-1.8.4, libhdf5-serial-dev,
+ libhdf5-lam-1.8.4, libhdf5-lam-dev,
+ libhdf5-openmpi-1.8.4, libhdf5-openmpi-dev,
+ libhdf5-mpich-1.8.4, libhdf5-mpich-dev,
+ libhdf5-mpi-1.8.4, libhdf5-mpi-dev
+Description: HDF5 1.8.8
+ Our build of the HDF5 1.8.8 library

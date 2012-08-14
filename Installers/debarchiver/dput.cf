@@ -1,0 +1,15 @@
+[xps-vbox]
+fqdn = 192.168.0.107
+incoming = /var/lib/debarchiver/incoming
+method = scp
+login = debarchiver
+run_dinstall = 0
+post_upload_command = ssh debarchiver@192.168.0.107 /usr/bin/debarchiver -x
+
+[inspiron-1318]
+fqdn = 192.168.0.104
+incoming = /var/lib/debarchiver/incoming
+method = scp
+login = debarchiver
+run_dinstall = 0
+post_upload_command = ssh debarchiver@192.168.0.104 /usr/bin/debarchiver -x

@@ -1,0 +1,2 @@
+deb [ trusted=yes ] http://192.168.0.104/apt-repo precise main
+deb-src [ trusted=yes ] http://192.168.0.104/apt-repo precise main

@@ -1,0 +1,28 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+# Sample debian/rules that uses debhelper.
+# This file was originally written by Joey Hess and Craig Small.
+# As a special exception, when this file is copied by dh-make into a
+# dh-make output file, you may use that output file without restriction.
+# This special exception was added by Craig Small in version 0.37 of dh-make.
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+PACKAGE:=libboost1.49
+DEBDIR:=$(CURDIR)
+SRCDIR:=/tmp/boost-src
+BLDDIR:=/tmp/boost-bld
+DESTDIR:=$(DEBDIR)/debian/$(PACKAGE)
+
+
+%:
+	dh $@ 
+
+override_dh_auto_install:
+	rm -rf  $(SRCDIR) $(BLDDIR) $(DESTDIR)
+	mkdir $(SRCDIR)
+	tar -xzf $(DEBDIR)/../libboost1.49_1.49.0.orig.tar.gz -C $(SRCDIR)
+	cd $(SRCDIR)/boost_1_49_0
+	./bootstrap.sh --prefix=$(DESTDIR)/usr
+	./b2 --prefix=$(DESTDIR)/usr --layout=tagged --build-dir=$(BLDDIR) -j2 --without-mpi variant=debug variant=release link=shared threading=multi runtime-link=shared install

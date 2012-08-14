@@ -1,0 +1,25 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+# Sample debian/rules that uses debhelper.
+# This file was originally written by Joey Hess and Craig Small.
+# As a special exception, when this file is copied by dh-make into a
+# dh-make output file, you may use that output file without restriction.
+# This special exception was added by Craig Small in version 0.37 of dh-make.
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+# This is supposed to work, but doesn't seem to
+# -O1 as workaround to hdf5/gcc/kernel bug
+#export DEB_CFLAGS_STRIP:=-O2
+#export DEB_CFLAGS_MAINT_APPEND:=-O1
+#export DEB_CXXFLAGS_MAINT_STRIP:=-O2
+#export DEB_CXXFLAGS_MAINT_APPEND:=-O1
+
+%:
+	dh $@ 
+
+
+override_dh_auto_configure:
+	# -O1 as workaround to hdf5/gcc/kernel bug
+	CFLAGS="-O1 -g" CXXFLAGS="-O1 -g" CPPFLAGS="" LDFLAGS="" ./configure --prefix=/usr --enable-cxx --enable-threadsafe --enable-unsupported --with-zlib=/usr --with-szlib=/usr --with-pthread=/usr

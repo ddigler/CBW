@@ -1,0 +1,6 @@
+files
+libhdf5.debhelper.log
+libhdf5.postinst.debhelper
+libhdf5.postrm.debhelper
+libhdf5.substvars
+libhdf5/

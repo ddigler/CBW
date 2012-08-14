@@ -1,0 +1,5 @@
+mv ~/Downloads/boost_1_49_0.tar.gz libboost1.49_1.49.0.orig.tar.gz
+tar -xzf libboost1.49_1.49.0.orig.tar.gz
+mv boost_1_49_0/* libboost1.49-1.49.0
+cd libboost1.49-1.49.0 
+debuild -uc -us

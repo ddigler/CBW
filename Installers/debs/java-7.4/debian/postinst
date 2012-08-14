@@ -1,0 +1,35 @@
+#!/bin/bash
+
+set -e
+
+PRIORITY=174
+JDKDIR="/usr/lib/java/jdk1.7.0_04"
+SRCBIN="$JDKDIR/bin"
+SRCMAN="$JDKDIR/man/man1"
+DSTBIN="/usr/bin"
+DSTMAN="/usr/share/man/man1"
+
+MASTER="$DSTBIN/java java $SRCBIN/java $PRIORITY"
+SLAVE=""
+
+for progpath in $(find $SRCBIN ! -type d -executable); do
+  progname=${progpath##*/}
+  manname="$progname.1"
+  manpath="$SRCMAN/$manname"
+
+  if [ "$progname" != "java" ]; then
+    SLAVE="$SLAVE --slave $DSTBIN/$progname $progname $progpath"
+  fi
+  if [ -f "$manpath" ]; then
+    SLAVE="$SLAVE --slave $DSTMAN/$manname $manname $manpath"
+  fi
+
+done
+
+case "$1" in
+  configure)
+    update-alternatives --install $MASTER $SLAVE
+    ;;
+esac
+
+exit 0

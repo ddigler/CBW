@@ -1,0 +1,12 @@
+java (7.4-2) precise; urgency=low
+
+  * Included openjdk source
+  * Changed to precise
+
+ -- Ryan Stoner <rstoner99@gmail.com>  Wed, 16 May 2012 09:15:35 -0500
+
+java (7.4-1) stable; urgency=low
+
+  * Initial release 
+
+ -- Ryan Stoner <rstoner99@gmail.com>  Thu, 03 May 2012 09:30:08 -0500

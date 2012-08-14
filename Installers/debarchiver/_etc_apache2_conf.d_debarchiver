@@ -1,0 +1,23 @@
+Alias /apt-repo /var/lib/debarchiver
+
+<Directory /var/lib/debarchiver>
+	Options Indexes FollowSymLinks MultiViews +Includes
+
+	# forbid access to user files
+	<Files ~ "^\.(devscripts|viminfo|bash.*)$">
+		#AllowOverride None
+		Order deny,allow
+		Deny from all
+	</Files>
+
+	AllowOverride None
+	Order allow,deny
+	Allow from all
+</Directory>
+
+# forbid access to .gnupg
+<Directory /var/lib/debarchiver/.gnupg>
+	AllowOverride None
+	Order deny,allow
+	Deny from all
+</Directory>

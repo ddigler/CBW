@@ -1,0 +1,9 @@
+*.build
+*.changes
+*.deb
+*.debian.tar.gz
+*.dsc
+*.upload
+# For now anyway
+*.orig.tar.gz
+boost_1_49_0

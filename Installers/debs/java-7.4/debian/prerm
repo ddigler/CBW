@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -e
+
+JDKDIR="/usr/lib/java/jdk1.7.0_04"
+SRCBIN="$JDKDIR/bin"
+
+case "$1" in
+  remove|deconfigure)
+    update-alternatives --remove java $SRCBIN/java
+    ;;
+esac
+
+exit 0

@@ -1,0 +1,6 @@
+files
+libsz2.debhelper.log
+libsz2.postinst.debhelper
+libsz2.postrm.debhelper
+libsz2.substvars
+libsz2/
